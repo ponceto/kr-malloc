@@ -14,8 +14,8 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __KR_MALLOC__
-#define __KR_MALLOC__
+#ifndef __KR_MALLOC_H__
+#define __KR_MALLOC_H__
 
 // ---------------------------------------------------------------------------
 // Block
@@ -54,4 +54,4 @@ private: // private data
 // End-Of-File
 // ---------------------------------------------------------------------------
 
-#endif /* __KR_MALLOC__ */
+#endif /* __KR_MALLOC_H__ */
