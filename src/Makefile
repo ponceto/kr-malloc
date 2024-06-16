@@ -38,22 +38,22 @@ RMFLAGS  = -f
 # default rules
 # ----------------------------------------------------------------------------
 
-.c.o :
+.c.o:
 	$(CC) -c $(CFLAGS) $(CPPFLAGS) $<
 
-.cc.o :
+.cc.o:
 	$(CXX) -c $(CXXFLAGS) $(CPPFLAGS) $<
 
 # ----------------------------------------------------------------------------
 # global targets
 # ----------------------------------------------------------------------------
 
-all : build
+all: build
 
-build : build_kr_malloc
+build: build_kr_malloc
 	@echo "=== $@ ok ==="
 
-clean : clean_kr_malloc
+clean: clean_kr_malloc
 	@echo "=== $@ ok ==="
 
 # ----------------------------------------------------------------------------
@@ -88,16 +88,16 @@ kr_malloc_CLEANFILES = \
 # build kr-malloc
 # ----------------------------------------------------------------------------
 
-build_kr_malloc : $(kr_malloc_PROGRAM)
+build_kr_malloc: $(kr_malloc_PROGRAM)
 
-$(kr_malloc_PROGRAM) : $(kr_malloc_OBJECTS)
+$(kr_malloc_PROGRAM): $(kr_malloc_OBJECTS)
 	$(LD) $(LDFLAGS) $(kr_malloc_LDFLAGS) -o $(kr_malloc_PROGRAM) $(kr_malloc_OBJECTS) $(kr_malloc_LDADD)
 
 # ----------------------------------------------------------------------------
 # clean kr-malloc
 # ----------------------------------------------------------------------------
 
-clean_kr_malloc :
+clean_kr_malloc:
 	$(RM) $(RMFLAGS) $(kr_malloc_OBJECTS) $(kr_malloc_CLEANFILES)
 
 # ----------------------------------------------------------------------------
