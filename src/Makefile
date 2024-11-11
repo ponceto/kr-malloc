@@ -80,10 +80,6 @@ kr_malloc_LDFLAGS = \
 kr_malloc_LDADD = \
 	$(NULL)
 
-kr_malloc_CLEANFILES = \
-	kr-malloc.bin \
-	$(NULL)
-
 # ----------------------------------------------------------------------------
 # build kr-malloc
 # ----------------------------------------------------------------------------
@@ -98,7 +94,7 @@ $(kr_malloc_PROGRAM): $(kr_malloc_OBJECTS)
 # ----------------------------------------------------------------------------
 
 clean_kr_malloc:
-	$(RM) $(RMFLAGS) $(kr_malloc_OBJECTS) $(kr_malloc_CLEANFILES)
+	$(RM) $(RMFLAGS) $(kr_malloc_OBJECTS) $(kr_malloc_PROGRAM)
 
 # ----------------------------------------------------------------------------
 # End-Of-File
