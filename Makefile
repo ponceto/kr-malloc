@@ -19,6 +19,7 @@
 # global environment
 # ----------------------------------------------------------------------------
 
+TOPDIR   = $(CURDIR)
 OPTLEVEL = -O2 -g
 WARNINGS = -Wall
 EXTRAS   = -fstack-protector-strong
@@ -26,7 +27,8 @@ CC       = gcc
 CFLAGS   = -std=c99 $(OPTLEVEL) $(WARNINGS) $(EXTRAS)
 CXX      = g++
 CXXFLAGS = -std=c++14 $(OPTLEVEL) $(WARNINGS) $(EXTRAS)
-CPPFLAGS = -I. -D_DEFAULT_SOURCE -D_FORTIFY_SOURCE=2
+CPP      = cpp
+CPPFLAGS = -I. -I$(TOPDIR)/src -D_DEFAULT_SOURCE -D_FORTIFY_SOURCE=2
 LD       = g++
 LDFLAGS  = -L.
 CP       = cp
@@ -39,10 +41,10 @@ RMFLAGS  = -f
 # ----------------------------------------------------------------------------
 
 .c.o:
-	$(CC) -c $(CFLAGS) $(CPPFLAGS) $<
+	$(CC) -c $(CFLAGS) $(CPPFLAGS) -o $@ $<
 
 .cc.o:
-	$(CXX) -c $(CXXFLAGS) $(CPPFLAGS) $<
+	$(CXX) -c $(CXXFLAGS) $(CPPFLAGS) -o $@ $<
 
 # ----------------------------------------------------------------------------
 # global targets
@@ -63,15 +65,15 @@ clean: clean_kr_malloc
 kr_malloc_PROGRAM = kr-malloc.bin
 
 kr_malloc_SOURCES = \
-	kr-malloc.cc \
+	src/kr-malloc.cc \
 	$(NULL)
 
 kr_malloc_HEADERS = \
-	kr-malloc.h \
+	src/kr-malloc.h \
 	$(NULL)
 
 kr_malloc_OBJECTS = \
-	kr-malloc.o \
+	src/kr-malloc.o \
 	$(NULL)
 
 kr_malloc_LDFLAGS = \
